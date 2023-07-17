@@ -12,11 +12,11 @@ This project is a web application for booking movie theater rooms, built with Sy
 
 ## Technologies Used 💻
 
-- Backend: Symfony 6.3.1
+- Backend: Symfony 5.4.25
 - Frontend: Angular
 - Database: MySQL 8.0
 - Container: Docker
-- Communication between backend and frontend: REST API
+- Communication between backend and frontend: REST API (api platform 2.7.5)
 
 ## Methodology 📈
 
