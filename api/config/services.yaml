@@ -19,8 +19,8 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
-    App\Api\Action\:
-        resource: '../src/Api/Action'
+    App\Api\:
+        resource: '../src/Api'
         tags: ['controller.service_arguments']
 
     App\Api\Listener\JsonExceptionResponseTransformerListener:

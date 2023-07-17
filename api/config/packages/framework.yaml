@@ -21,8 +21,7 @@ framework:
         mapping:
             path: 
                 - '%kernel.project_dir%/config/api_platform/serialization'
-    assets:
-        base_path: '/api/v1'
+
 
 when@test:
     framework:
