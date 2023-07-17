@@ -25,7 +25,7 @@ class User implements UserInterface
    /**
     * @var Collection|CreditCard[]
     */
-    private Collection $creditCards;
+    private ?Collection $creditCards;
 
 
     /**
