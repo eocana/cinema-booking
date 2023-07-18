@@ -20,3 +20,5 @@ App\Entity\User:
       groups: [user_read]
     updatedAt:
       groups: [user_read]
+    creditCards:
+      groups: [user_read]

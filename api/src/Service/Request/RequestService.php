@@ -25,8 +25,20 @@ class RequestService
             if($isRequired){
                 throw new BadRequestHttpException(sprintf('The field %s is required', $fieldName));
             }
+
+            return null;
         }
 
+        if(isset($requestData[$fieldName])){
+
+            return $requestData[$fieldName];
+        }
+
+        if($isRequired){
+                throw new BadRequestHttpException(\sprintf('The field %s is required', $fieldName));
+        }
+
+        return null;
     }
 
     /**
