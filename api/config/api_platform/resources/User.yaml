@@ -9,6 +9,8 @@ App\Entity\User:
       controller: App\Api\Action\User\Register
       denormalization_context:
         groups: [user_post]
+      output_formats:
+        json: ["application/json"]
       openapi_context:
         summary: Register a new user
   itemOperations:

@@ -28,13 +28,13 @@ class UserRegisterService
         $surname = RequestService::getField($request, 'surname');
         $username = RequestService::getField($request, 'username');
 
-        $user = new User( $email, $password, $username, $name, $surname);
+        $user = new User($email, $password, $username, $name, $surname);
         $user->setPassword($this->encoderService->generateEncodedPassword($user, $password));
-        
-        try{
+
+        try {
             $this->userRepository->saveEntity($user);
-        }catch(\Exception $e){
-            throw UserAlreadyExistException::fromEmail($email);
+        } catch (\Exception $e) {
+            throw UserAlreadyExistException::fromSQL($e->getMessage());
         }
 
         return $user;
