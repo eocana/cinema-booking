@@ -47,7 +47,7 @@ class RegisterTest extends WebTestCase
             'name' => 'test_' . $randomNum, // añadimos el número aleatorio al nombre
             'surname' => 'testeo_' . $randomNum, // añadimos el número aleatorio al apellido
             'email' => 'test_' . $randomNum . '@example.com', // añadimos el número aleatorio al correo electrónico
-            'password' => '1234',
+            'password' => '123456',
             'username' => 'test_' . $randomNum // añadimos el número aleatorio al nombre de usuario
         ];
         //echo json_encode($payload);
@@ -55,15 +55,65 @@ class RegisterTest extends WebTestCase
         $client->request(Request::METHOD_POST, self::ENDPOINT, [], [], ['CONTENT_TYPE' => 'application/json'], json_encode($payload));
         $response = $client->getResponse();
         $data = json_decode($response->getContent(), true);
-       // Comprueba los datos de la respuesta JSON
 
-       $this->assertTrue(
-                in_array($response->getStatusCode(), [201, 200]),
-                sprintf("Error: \n Code: Se esperaba 200/201, pero se obtuvo %s \n Description error: %s\n\n ",$response->getStatusCode(), $data['hydra:description']),
+        /* fwrite(STDERR, print_r(json_encode($payload), TRUE)); */
+
+        $statusCodeCheck = in_array($response->getStatusCode(), [200, 201]);
+        $errorMessage = 'Contact with the administrator, something went wrong';
+        //$this->assertEquals(201, $response->getStatusCode());
+
+        if(isset($data['hydra:description'])) {
+            $errorMessage = sprintf("Error: \n Code: Se esperaba 200/201, pero se obtuvo %s \n Description error: %s\n\n ", $response->getStatusCode(), $data['hydra:description']);
+        }
+
+        if(isset($data['message'])) {
+            $errorMessage = sprintf("Error:\n Code: Se esperaba un 200/201, pero se obtuvo %s \n Description error: %s\n\n", $response->getStatusCode(), $data['message']);
+        }
+        
+        //$this->assertTrue($statusCodeCheck, $errorMessage);
+        if( 201 === $response->getStatusCode()){
+            fwrite(STDERR, print_r("\nNew user created: \n".json_encode($data), TRUE));
+        }
+
+        $this->assertTrue(
+                in_array($response->getStatusCode(), [200, 201]), $errorMessage,
         );
+
+        
         
     }
 
+    public function testAlreadyExists()
+    {
+        $client = static::createClient();
+        
+        //FAIL with email or username
+        $payload = [
+            'name' => 'Eric',
+            'surname' => 'Ocaña Segura', 
+            'email' => 'root@gmail.com', 
+            'password' => '123456',
+            'username' => 'eric.ocana',
+        ];
+
+        $client->request(Request::METHOD_POST, self::ENDPOINT, [], [], ['CONTENT_TYPE' => 'application/json'], json_encode($payload));
+        $response = $client->getResponse();
+        $data = json_decode($response->getContent(), true);
+
+        $statusCodeCheck = in_array($response->getStatusCode(), [400, 409]);
+        $errorMessage = 'Contact with the administrator, something went wrong';
+
+        if(isset($data['hydra:description'])) {
+            $errorMessage = sprintf("Error: \n Code: Se esperaba 400/409, pero se obtuvo %s \n Description error: %s\n\n ", $response->getStatusCode(), $data['hydra:description']);
+        }
+
+        if(isset($data['message'])) {
+            $errorMessage = sprintf("Error:\n Code: Se esperaba un 400/409, pero se obtuvo %s \n Description error: %s\n\n", $response->getStatusCode(), $data['message']);
+        }
+        
+        $this->assertTrue($statusCodeCheck, $errorMessage,);
+
+    }
 }
 
 

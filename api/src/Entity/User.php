@@ -25,7 +25,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
    /**
     * @var Collection|CreditCard[]
     */
-    private Collection $creditCards;
+    private ?Collection $creditCards;
 
 
     /**
@@ -47,7 +47,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->active = false;
         $this->createdAt = new \DateTime();
         $this->markAsUpdated();
-        $this->creditCards = new ArrayCollection();
+        $this->creditCards = null;
     }
 
 
@@ -188,7 +188,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return CreditCard[]
      */
-    public function getCreditCards(): array
+    public function getCreditCards(): Collection
     {
         return $this->creditCards;
     }
