@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="LaravelPintOptionsConfiguration">
+    <option name="ruleset" value="laravel" />
+  </component>
   <component name="MessDetectorOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>
@@ -132,6 +135,68 @@
       <path value="$PROJECT_DIR$/api/vendor/symfony/config" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/polyfill-php80" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/maker-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/messenger" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/doctrine-messenger" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/redis-messenger" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/amqp-messenger" />
+      <path value="$PROJECT_DIR$/mailer/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/mailer/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/mailer/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/mailer/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/mailer/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/mailer/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/mailer/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/mailer/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/runtime" />
+      <path value="$PROJECT_DIR$/mailer/vendor/doctrine/sql-formatter" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/dotenv" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/mailer/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/messenger" />
+      <path value="$PROJECT_DIR$/mailer/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/doctrine-messenger" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/mailer/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/doctrine-bridge" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/mailer/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/framework-bundle" />
+      <path value="$PROJECT_DIR$/mailer/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/mailer/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/flex" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/redis-messenger" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/amqp-messenger" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/mailer/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/mailer/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/mailer/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/mailer/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/mailer/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/mailer/vendor/composer" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />

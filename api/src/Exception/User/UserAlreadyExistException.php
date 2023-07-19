@@ -9,6 +9,7 @@ class UserAlreadyExistException extends ConflictHttpException
 {
     private const MESSAGE = 'User with email "%s" already exist';
     private const MESSAGE_SQL = 'Error SQL: %s';
+
     public static function fromEmail(string $email): self
     {
         throw new self(\sprintf(self::MESSAGE, $email));

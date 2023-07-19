@@ -2,7 +2,8 @@
 
 namespace App\Entity;
 
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Uid\Uuid;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -22,9 +23,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private \DateTime $updatedAt;
     private \DateTime $createdAt;
 
-   /**
-    * @var Collection|CreditCard[]
-    */
+    /**
+     * @var Collection|CreditCard[]
+     */
     private ?Collection $creditCards;
 
 
@@ -102,12 +103,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setEmail(string $email): void
     {
-        if (!\filter_var($email, \FILTER_VALIDATE_EMAIL)){
+        if (!\filter_var($email, \FILTER_VALIDATE_EMAIL)) {
             throw new \LogicException('Invalid email');
-        }else{
+        } else {
             $this->email = $email;
         }
-
     }
 
     public function getPassword(): string
