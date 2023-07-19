@@ -37,6 +37,18 @@ services:
     networks:
       - cinema-booking-network
 
+  #Intercepta los correos enviados por el Mailer para dev y asi no tener que ir al correo real
+  symfony-api-mailcatcher:
+    container_name: symfony-api-mailcatcher
+    image: schickling/mailcatcher 
+    ports:
+      - 1080:1080
+      - 1025:1025
+    depends_on:
+      - symfony-api-mailer-db
+    networks:
+      - cinema-booking-network
+    
 volumes:
   symfony-api-mailer-db-data:
 
