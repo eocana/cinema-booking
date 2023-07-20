@@ -1,27 +1,26 @@
 <?php
 
-namespace Mailer\Messenger\Message;
 
+namespace Mailer\Messenger\Message;
 
 class UserRegisteredMessage
 {
-    private $userId;
-    private $name;
-    private $email;
-    private $token;
+    private string $id;
+    private string $name;
+    private string $email;
+    private string $token;
 
-
-    public function __construct(string $userId, string $name, string $email, string $token)
+    public function __construct(string $id, string $name, string $email, string $token)
     {
-        $this->userId = $userId;
+        $this->id = $id;
         $this->name = $name;
         $this->email = $email;
         $this->token = $token;
     }
 
-    public function getUserId(): string
+    public function getId(): string
     {
-        return $this->userId;
+        return $this->id;
     }
 
     public function getName(): string

@@ -10,6 +10,9 @@ class JsonExceptionResponseTransformerListener
 {
     public function onKernelException(ExceptionEvent $event): void
     {
+
+
+
         //TODO: revisar de que me pille bien todo el resto de exceptiones no solo la logicas o http
         $exception = $event->getThrowable();
 

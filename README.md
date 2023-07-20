@@ -1,5 +1,6 @@
 # Movie Theater Booking System 🎥
 
+
 This project is a web application for booking movie theater rooms, built with Symfony for the backend, Angular for the frontend, and Docker to containerize the application and its dependencies, including the SQL database.
 
 ## Features 🌟

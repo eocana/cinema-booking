@@ -52,7 +52,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
 
-    public function removeCreditCard(CreditCard $creditCard): self
+    /* public function removeCreditCard(CreditCard $creditCard): self
     {
         if (($key = array_search($creditCard, $this->creditCards, true)) !== false) {
             unset($this->creditCards[$key]);
@@ -68,7 +68,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
-    }
+    } */
 
     public function getId(): string
     {

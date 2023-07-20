@@ -31,7 +31,7 @@ class UserRegisteredMessageHandler implements MessageHandlerInterface
                 $this->host,
                 ClientRoute::ACTIVATE_ACCOUNT,
                 $message->getToken(),
-                $message->getUserId()
+                $message->getId()
             )
         ];
 
