@@ -1,10 +1,10 @@
 App\Entity\User:
   attributes:
-    id: 
+    id:
       groups: [user_read]
-    name: 
+    name:
       groups: [user_read, user_post]
-    surname: 
+    surname:
       groups: [user_read, user_post]
     email:
       groups: [user_read, user_post]
@@ -16,6 +16,8 @@ App\Entity\User:
       groups: [user_read]
     active:
       groups: [user_read]
+    token:
+      groups: [user_activate]
     createdAt:
       groups: [user_read]
     updatedAt:
