@@ -53,7 +53,8 @@ class RegisterTest extends WebTestCase
             'username' => 'test_' . $randomNum // añadimos el número aleatorio al nombre de usuario
         ];
         //echo json_encode($payload);
-        // Realiza la petición de registro
+
+
         $client->request(Request::METHOD_POST, self::ENDPOINT, [], [], ['CONTENT_TYPE' => 'application/json', 'HTTP_ACCEPT' => 'application/json'], json_encode($payload));
         $response = $client->getResponse();
 

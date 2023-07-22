@@ -1,25 +1,53 @@
 security:
-    
     enable_authenticator_manager: true
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
-        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'argon2i'
+        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: "argon2i"
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
-        users_in_memory: { memory: null }
+        user_provider:
+            id: App\Security\Core\User\UserProvider
+        # users_in_memory: { memory: null }
     firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+        register:
+            pattern: ^/api/v1/users/register
+            methods: [POST]
             security: false
-        main:
-            lazy: true
-            provider: users_in_memory
+        resend_activation_email:
+            pattern: ^/api/v1/users/resend_activation_email
+            methods: [POST]
+            security: false
+        docs:
+            pattern: ^/api/v1/docs
+            security: false
+            methods: [GET]
+        login:
+            pattern: ^/api/v1/users/login
+            stateless: true
+            provider: user_provider
+            json_login:
+                check_path: /api/v1/users/login_check
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+                require_previous_session: false
+                # username_path: email
+                # password_path: password
+        api:
+            pattern: ^/api/v1
+            stateless: true
+            jwt: ~
+        # dev:
+        #     pattern: ^/(_(profiler|wdt)|css|images|js)/
+        #     security: false
+        # main:
+        #     lazy: true
+        #     provider: users_in_memory
 
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#the-firewall
+        # activate different ways to authenticate
+        # https://symfony.com/doc/current/security.html#the-firewall
 
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
+        # https://symfony.com/doc/current/security/impersonating_user.html
+        # switch_user: true
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
@@ -35,7 +63,7 @@ when@test:
             # are not important, waste resources and increase test times. The following
             # reduces the work factor to the lowest possible values.
             Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
-                algorithm: 'argon2i'
+                algorithm: "argon2i"
                 cost: 4 # Lowest possible value for bcrypt
                 time_cost: 3 # Lowest possible value for argon
                 memory_cost: 10 # Lowest possible value for argon

@@ -22,6 +22,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private bool $active;
     private \DateTime $updatedAt;
     private \DateTime $createdAt;
+    private array $roles = [];
 
     /**
      * @var Collection|CreditCard[]
@@ -49,6 +50,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->createdAt = new \DateTime();
         $this->markAsUpdated();
         $this->creditCards = null;
+        $this->roles = ['ROLE_USER'];
     }
 
 
@@ -120,14 +122,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->password = $password;
     }
 
-    public function getUsername(): string
-    {
-        return $this->username;
-    }
-
-    public function setUsername(string $username): void
+    public function setMyUsername(string $username): void
     {
         $this->username = $username;
+    }
+
+    public function getMyUsername(): string
+    {
+        return $this->username;
     }
 
     public function getToken(): ?string
@@ -202,7 +204,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // TODO: Implement eraseCredentials() method.
     }
 
-    public function getUserIdentifier(): string
+    public function getUsername(): string
     {
         // TODO: Implement getUserIdentifier() method.
         return $this->email;
@@ -211,6 +213,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getRoles(): array
     {
         // TODO: Implement getRoles() method.
-        return [];
+        return $this->roles;
     }
 }

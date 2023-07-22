@@ -11,7 +11,10 @@ App\Entity\User:
         groups: [user_post]
       openapi_context:
         summary: Register a new user
-
+        responses: # Aquí especificas explícitamente las respuestas que esperas
+          '201': { description: 'User registered successfully' }
+          '400': { description: 'Invalid input' }
+          '422': { description: 'Unprocessable entity' }
     resend_activation_email:
       method: POST
       path: /users/resend_activation_email
@@ -38,6 +41,36 @@ App\Entity\User:
                   properties:
                     message:
                       type: string
+         
+            
+    login:
+      method: POST
+      route_name: api_login_check
+      openapi_context:
+        summary: Login a user in the API
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: string
+                    required: true
+                  password:
+                    type: string
+                    required: true
+        responses:
+          200:
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    token:
+                      type: string
+          '201': { description: 'Not used' }
   itemOperations:
     get:
       method: GET
