@@ -13,7 +13,9 @@ class MailerService
 {
     private const TEMPLATE_SUBJECT_MAP = [
         TwigTemplate::USER_REGISTER => 'Activation account',
+        TwigTemplate::USER_PASSWORD_RESET => 'Reset password',
     ];
+
     private MailerInterface $mailer;
     private Environment $engine;
     private LoggerInterface $logger;
