@@ -76,7 +76,7 @@ class RegisterTest extends WebTestCase
 
         //$this->assertTrue($statusCodeCheck, $errorMessage);
         if (201 === $response->getStatusCode()) {
-            fwrite(STDERR, print_r("\nNew user created: \n" . json_encode($data), TRUE));
+            fwrite(STDERR, print_r("\nNew user created: \n" . json_encode($data) . "\n\n\n", TRUE));
         }
 
         $this->assertTrue(in_array($response->getStatusCode(), [200, 201]), $errorMessage);

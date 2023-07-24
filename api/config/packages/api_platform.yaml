@@ -11,7 +11,7 @@ api_platform:
                 name: Authorization
                 type: header
     enable_swagger_ui: true
-    #enable_re_doc: true
+    enable_re_doc: true
     title: "Symfony API"
     version: "1.0.0"
     show_webby: false

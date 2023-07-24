@@ -41,8 +41,7 @@ App\Entity\User:
                   properties:
                     message:
                       type: string
-         
-            
+          201: { description: 'Not used' }         
     login:
       method: POST
       route_name: api_login_check
@@ -70,7 +69,34 @@ App\Entity\User:
                   properties:
                     token:
                       type: string
-          '201': { description: 'Not used' }
+          '201': { description: 'Not used' }`
+    request_reset_password:
+      method: POST
+      path: /users/request_reset_password
+      controller: App\Api\Action\User\RequestResetPassword
+      deserialize: false
+      openapi_context:
+        summary: Request a password reset with a URL
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: string
+                    required: true
+        responses:
+          200:
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+          201: { description: 'Not used' }
   itemOperations:
     get:
       method: GET
