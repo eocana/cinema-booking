@@ -97,6 +97,40 @@ App\Entity\User:
                     message:
                       type: string
           201: { description: 'Not used' }
+    reset_password:
+      method: POST
+      path: /users/reset_password
+      controller: App\Api\Action\User\ResetPassword
+      deserialize: false
+      openapi_context:
+        summary: Reset user password
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userId:
+                    type: string
+                    required: true
+                  resetPasswordToken:
+                    type: string
+                    required: true
+                  new-password:
+                    type: string
+                    required: true
+        responses:
+          200:
+            description: The password has been reset
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    user:
+                      type: object
+          201: { description: 'Not used' }
+
   itemOperations:
     get:
       method: GET

@@ -34,4 +34,13 @@ class UserRepository extends BaseRepository
 
         return $user;
     }
+
+    public function findOneByIdAndResetPasswordToken(string $id, string $token): User
+    {
+        if (null === $user = $this->objectRepository->findOneBy(['id' => $id, 'resetPasswordToken' => $token])) {
+            throw UserNotFoundException::fromResetPasswordToken($id, $token);
+        }
+
+        return $user;
+    }
 }

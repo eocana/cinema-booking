@@ -15,3 +15,5 @@ api_platform:
     title: "Symfony API"
     version: "1.0.0"
     show_webby: false
+    formats:
+         json: ['application/json']
