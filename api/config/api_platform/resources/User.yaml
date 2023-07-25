@@ -125,12 +125,38 @@ App\Entity\User:
             content:
               application/json:
                 schema:
-                  type: object
-                  properties:
-                    user:
-                      type: object
-          201: { description: 'Not used' }
+                  $ref: '#/components/schemas/User-user_read'
+          201: 
+            description: 'Not used'
+            
+    change_password:
+      method: POST
+      path: /users/change_password
+      controller: App\Api\Action\User\ChangePassword
+      deserialize: false
+      openapi_context:
+        summary: Changes user password
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  oldPassword:
+                    type: string
+                    required: true
+                  newPassword:
+                    type: string
+                    required: true     
+        responses:
+          200:
+            description: The password has been changed
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/User-user_read'
 
+          201: { description: 'Not used' }
   itemOperations:
     get:
       method: GET

@@ -24,3 +24,5 @@ App\Entity\User:
       groups: [user_read]
     creditCards:
       groups: [user_read]
+    roles:
+      groups: [user_read, user_post]
