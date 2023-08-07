@@ -8,6 +8,7 @@ use App\Repository\UserRepository;
 use App\Service\User\EncoderService;
 use App\Service\Request\RequestService;
 use App\Exception\User\PasswordException;
+use App\Exception\User\UserNotFoundException;
 use Doctrine\ORM\OptimisticLockException;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -27,16 +28,17 @@ class ChangePasswordService
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function changePassword(Request $request, User $user): User
+    public function changePassword(string $userId, string $oldPassword, string $newPassword): User
     {
-        $oldPassword = RequestService::getField($request, 'oldPassword');
-        $newPassword = RequestService::getField($request, 'newPassword');
+
+        $user = $this->userRepository->findOneByIdOrFail($userId);
 
         if (!$this->encoderService->isPasswordValid($user, $oldPassword)) {
             throw PasswordException::oldPasswordNotValid();
         }
 
         $user->setPassword($this->encoderService->generateEncodedPassword($user, $newPassword));
+
         $this->userRepository->saveEntity($user);
 
         return $user;

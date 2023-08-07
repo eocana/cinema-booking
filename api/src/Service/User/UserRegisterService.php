@@ -26,13 +26,9 @@ class UserRegisterService
         $this->messageBus = $messageBus;
     }
 
-    public function create(Request $request): User
+    public function create(string $name, string $email, string $password, string $surname, string $username): User
     {
-        $name = RequestService::getField($request, 'name');
-        $email = RequestService::getField($request, 'email');
-        $password = RequestService::getField($request, 'password');
-        $surname = RequestService::getField($request, 'surname');
-        $username = RequestService::getField($request, 'username');
+
 
         $user = new User($email, $password, $username, $name, $surname);
         $user->setPassword($this->encoderService->generateEncodedPassword($user, $password));

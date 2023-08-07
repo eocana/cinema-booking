@@ -2,14 +2,16 @@
 
 namespace App\Service\User;
 
-use App\Exception\User\UserIsActiveException;
-use App\Messenger\Message\UserRegisteredMessage;
 use App\Messenger\RoutingKey;
+use Doctrine\ORM\ORMException;
 use App\Repository\UserRepository;
 use App\Service\Request\RequestService;
+use Doctrine\ORM\OptimisticLockException;
+use App\Exception\User\UserIsActiveException;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
+use App\Messenger\Message\UserRegisteredMessage;
 use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
 
 class ResendActivationEmailService
 {
@@ -23,13 +25,15 @@ class ResendActivationEmailService
         $this->messageBus = $messageBus;
     }
 
-    public function resend(Request $request): void
+    /**
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function resend(string $email): void
     {
 
-
-        $email = RequestService::getField($request, 'email');
-
         $user = $this->userRepository->findOneByEmailOrFail($email);
+
         //echo 'User found: ' . $user->getName() . PHP_EOL;
         if ($user->isActive()) {
             throw UserIsActiveException::fromEmail($email);
