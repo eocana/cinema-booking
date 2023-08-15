@@ -16,6 +16,10 @@ class ActivateAccountService
         $this->userRepository = $userRepository;
     }
 
+    /**
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
     public function activate(string $id, string $token): User
     {
         $user = $this->userRepository->findOneInactiveOrFail($id, $token);

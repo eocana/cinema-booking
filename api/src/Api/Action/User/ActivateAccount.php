@@ -3,7 +3,9 @@
 namespace App\Api\Action\User;
 
 use App\Entity\User;
+use Doctrine\ORM\ORMException;
 use App\Service\Request\RequestService;
+use Doctrine\ORM\OptimisticLockException;
 use App\Service\User\ActivateAccountService;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -18,6 +20,10 @@ class ActivateAccount
         $this->activateAccountService = $activateAccountService;
     }
 
+    /**
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
     public function __invoke(Request $request, string $id): User
     {
         return $this->activateAccountService->activate($id, RequestService::getField($request, 'token'));

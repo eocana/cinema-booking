@@ -4,6 +4,7 @@ namespace App\Api\Action\User;
 
 use PHPUnit\Util\Json;
 use App\Service\Request\RequestService;
+use Doctrine\ORM\OptimisticLockException;
 use Symfony\Component\HttpFoundation\Request;
 use App\Service\User\ResendActivationEmailService;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -18,7 +19,10 @@ class ResendActivationEmail
     }
 
 
-
+    /**
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
     public function __invoke(Request $request): JsonResponse
     {
         $this->resendActivationEmail->resend(RequestService::getField($request, 'email'));
